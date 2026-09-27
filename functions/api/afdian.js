@@ -131,7 +131,11 @@ async function sendDiscordBroadcast(order) {
 async function grantDiscordRoleIfMatched(order) {
   const botToken = ['MTU1MjMzMjMwNDg5Mjk1MjY5Ng', 'GSWVvr', 'JGMF1T7NJ5hhUbLDSEfw5B4OYUGlVCJaWOR734'].join('.');
   const guildId = '1552041753631129801';
-  const targetRoleId = '1553851450688536596'; // ⚡ 赞助者 / Sponsor 专属身份组
+  const roleHonorId = '1553853128846217358';   // 👑 荣誉赞助官 (¥99.99/月)
+  const roleSponsorId = '1553851450688536596'; // ⚡ 赞助者 / Sponsor (¥12.00/月)
+
+  const amount = parseFloat(order.total_amount) || 0;
+  const targetRoleId = amount >= 90 ? roleHonorId : roleSponsorId;
 
   const remark = order.remark || '';
   if (!remark || !remark.trim()) return;

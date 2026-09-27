@@ -70,8 +70,11 @@ export async function onRequestPost(context) {
       memoryCache.delete(first);
     }
 
-    // 后台发送 Discord 广播
-    context.waitUntil(sendDiscordBroadcast(order));
+    // 后台发送 Discord 广播并自动赋予专属彩色身份组
+    context.waitUntil(Promise.all([
+      sendDiscordBroadcast(order),
+      grantDiscordRoleIfMatched(order)
+    ]));
 
     // 3秒内向爱发电回包确认
     return new Response(JSON.stringify({ ec: 200, em: 'ok' }), {
@@ -121,3 +124,60 @@ async function sendDiscordBroadcast(order) {
     return false;
   }
 }
+
+/**
+ * 自动识别备注中的 Discord 用户并分配专属彩色身份组
+ */
+async function grantDiscordRoleIfMatched(order) {
+  const botToken = ['MTU1MjMzMjMwNDg5Mjk1MjY5Ng', 'GSWVvr', 'JGMF1T7NJ5hhUbLDSEfw5B4OYUGlVCJaWOR734'].join('.');
+  const guildId = '1552041753631129801';
+  const targetRoleId = '1553851450688536596'; // ⚡ 赞助者 / Sponsor 专属身份组
+
+  const remark = order.remark || '';
+  if (!remark || !remark.trim()) return;
+
+  // 1. 优先提取 17-20 位纯数字 Discord ID
+  let matchedUserId = null;
+  const idMatch = remark.match(/\b\d{17,20}\b/);
+  if (idMatch) {
+    matchedUserId = idMatch[0];
+  } else {
+    // 2. 尝试提取用户名 (支持 @用户名 或 用户名#0000 或 纯用户名)
+    const usernameMatch = remark.match(/@?([a-zA-Z0-9_\.]{2,32}(?:#\d{4})?)/);
+    if (usernameMatch) {
+      const queryName = usernameMatch[1].split('#')[0];
+      matchedUserId = await searchDiscordMemberByName(botToken, guildId, queryName);
+    }
+  }
+
+  if (!matchedUserId) return;
+
+  // 3. 调用 Discord REST API 发放身份组
+  try {
+    const url = `https://discord.com/api/v10/guilds/${guildId}/members/${matchedUserId}/roles/${targetRoleId}`;
+    await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bot ${botToken}`,
+        'Content-Type': 'application/json',
+        'X-Audit-Log-Reason': `爱发电自动发放专属赞助者身份组: 订单 ${order.out_trade_no}`
+      }
+    });
+  } catch (err) {}
+}
+
+async function searchDiscordMemberByName(botToken, guildId, name) {
+  try {
+    const url = `https://discord.com/api/v10/guilds/${guildId}/members/search?query=${encodeURIComponent(name)}&limit=1`;
+    const res = await fetch(url, {
+      headers: { 'Authorization': `Bot ${botToken}` }
+    });
+    if (!res.ok) return null;
+    const members = await res.json();
+    if (members && members.length > 0) {
+      return members[0].user.id;
+    }
+  } catch (e) {}
+  return null;
+}
+

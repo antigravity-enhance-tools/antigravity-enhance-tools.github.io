@@ -1501,28 +1501,6 @@
       color: var(--text-main);
     }
 
-    .sponsor-page-cta-wrap {
-      text-align: center;
-      margin-top: 2.2rem;
-      padding: 0 1rem;
-    }
-    .sponsor-page-cta-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.85rem 2.2rem;
-      font-size: 0.98rem;
-      border-radius: 999px;
-      text-decoration: none;
-      max-width: 100%;
-      box-sizing: border-box;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
-    }
-    .sponsor-cta-text-short {
-      display: none;
-    }
-
     @media (max-width: 768px) {
       .sponsor-grid {
         grid-template-columns: 1fr;
@@ -1609,14 +1587,17 @@
         display: inline-flex !important; /* 移动端显示汉堡侧边栏按钮 */
       }
       .discord-nav-btn {
-        display: none !important; /* 侧边栏内已完整包含 */
+        display: none; /* 收进侧边栏内 */
+      }
+      .github-nav-btn span {
+        display: none;
       }
       .github-nav-btn {
-        display: none !important; /* 移动端隐藏顶部 GitHub 按钮，消除空框幽灵按钮（抽屉内已完整提供） */
+        padding: 0 0.65rem;
       }
       .hero-title-full { display: none; }
       .hero-title-short { display: inline; }
-      .hero-title { font-size: 2.5rem; }
+      .hero-title { font-size: 2.6rem; }
       .metrics-bar { grid-template-columns: repeat(2, 1fr); }
       .why-grid { grid-template-columns: 1fr; }
       .feature-showcase-row, .feature-showcase-row.reverse {
@@ -1639,178 +1620,21 @@
     }
 
     @media (max-width: 768px) {
-      .section-container {
-        padding: 3.5rem 1.25rem;
-      }
-      .hero-section {
-        padding: 2.8rem 1.25rem 3rem;
-      }
-      .hero-title { font-size: 2.1rem; line-height: 1.25; }
-      .hero-desc { font-size: 1rem; line-height: 1.6; }
+      .hero-title { font-size: 2.1rem; }
+      .hero-desc { font-size: 1.05rem; }
       .metrics-bar { grid-template-columns: 1fr; }
       .installer-dual-grid { grid-template-columns: 1fr; }
-      .community-box {
-        margin: 1.5rem 1rem 2.5rem;
-        padding: 2.2rem 1.4rem;
-        border-radius: 18px;
-        gap: 1.5rem;
-      }
-      .community-text h3 {
-        font-size: 1.5rem;
-        line-height: 1.3;
-        margin-bottom: 0.6rem;
-      }
-      .community-text p {
-        font-size: 0.92rem;
-        line-height: 1.65;
-        margin: 0 auto;
-      }
-      .community-btn-wrapper {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-      }
-      .discord-official-btn {
-        width: 100%;
-        max-width: 320px;
-        justify-content: center;
-        height: 46px;
-        font-size: 0.95rem;
-      }
-      footer {
-        padding: 2.2rem 1.25rem 2.5rem;
-      }
       .footer-content {
         flex-direction: column;
-        align-items: center;
         justify-content: center;
-        gap: 1.25rem;
-      }
-      .footer-left {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 0.5rem;
-        font-size: 0.86rem;
-        line-height: 1.55;
-      }
-      .footer-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 0.75rem 1.4rem;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-      }
-      .footer-links li {
-        list-style: none;
-      }
-      .footer-links li a {
-        white-space: nowrap;
-        font-size: 0.88rem;
-        display: inline-block;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .version-tag { display: none !important; }
-      .nav-container { padding: 0.65rem 0.85rem; }
-      .nav-actions { gap: 0.45rem; }
-      .theme-toggle-btn, .menu-toggle-btn {
-        width: 36px;
-        height: 36px;
-        border-radius: 9px;
-      }
-      .download-nav-btn {
-        height: 36px;
-        padding: 0 0.75rem;
-        font-size: 0.82rem;
-        gap: 0.35rem;
-        border-radius: 9px;
-      }
-      .download-icon {
-        width: 15px;
-        height: 15px;
-      }
-      .hero-btns {
-        flex-direction: column;
-        width: 100%;
-        max-width: 320px;
-        margin: 0 auto 2.2rem;
-        gap: 0.75rem;
-      }
-      .hero-btns .hero-cta {
-        width: 100%;
-        justify-content: center;
-        padding: 0.85rem 1.2rem;
-        font-size: 0.95rem;
-        white-space: nowrap;
-      }
-      .section-container {
-        padding: 3rem 1rem;
-      }
-      .section-header h2 {
-        font-size: 1.85rem;
-      }
-      .feature-content h3 {
-        font-size: 1.55rem;
-        line-height: 1.3;
-      }
-      .feature-content p {
-        font-size: 0.95rem;
-        line-height: 1.65;
-      }
-      .feature-showcase-row {
-        margin-bottom: 3.5rem;
-        gap: 1.5rem;
-      }
-      .why-card {
-        padding: 1.5rem 1.25rem;
-      }
-      .why-card-title {
-        font-size: 1.25rem;
-      }
-      .sponsor-card {
-        padding: 1.6rem 1.2rem;
-      }
-      .sponsor-page-cta-wrap {
-        margin-top: 1.6rem;
-      }
-      .sponsor-page-cta-btn {
-        width: 100%;
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
-      }
-      .sponsor-cta-text-full {
-        display: none;
-      }
-      .sponsor-cta-text-short {
-        display: inline;
       }
     }
 
     @media (max-width: 480px) {
+      .version-tag { display: none; }
       .logo-area { gap: 0.45rem; }
-      .hero-title {
-        font-size: 1.85rem;
-      }
-      .section-header h2 {
-        font-size: 1.65rem;
-      }
-      .feature-content h3 {
-        font-size: 1.4rem;
-      }
-      .author-card {
-        padding: 1.8rem 1.2rem;
-      }
-      .footer-links {
-        gap: 0.65rem 1.1rem;
-      }
-      .footer-links li a {
-        font-size: 0.84rem;
-      }
+      .nav-container { padding: 0.65rem 0.85rem; }
+      .nav-actions { gap: 0.5rem; }
     }
   </style>
 </head>
@@ -1831,7 +1655,7 @@
         <img src="assets/logo_glyph_transparent.png" alt="Logo" class="drawer-logo-img">
         <div class="drawer-logo-texts">
           <span class="drawer-logo-title">Antigravity Enhance</span>
-          <span class="drawer-version">v0.1.6 · 增强套件</span>
+          <span class="drawer-version">v0.1.7 · 增强套件</span>
         </div>
       </div>
       <button class="drawer-close-btn" onclick="closeSidebar()" aria-label="关闭侧边栏">✕</button>
@@ -1917,7 +1741,7 @@
 
     <div class="drawer-footer">
       <a href="https://github.com/Kutaze/Antigravity-Enhance-Pack-Tools/releases" target="_blank" rel="noopener noreferrer" class="drawer-cta-btn">
-        📥 客户端下载 (v0.1.6)
+        📥 客户端下载 (v0.1.7)
       </a>
       <div class="drawer-community-row">
         <a href="https://afdian.com/a/Kutaze" target="_blank" class="drawer-mini-btn" style="color: #a855f7; border-color: rgba(168, 85, 247, 0.4);">
@@ -1943,7 +1767,7 @@
           <span class="logo-text-full">Antigravity Enhance Tools</span>
           <span class="logo-text-short">AG Enhance</span>
         </span>
-        <span class="version-tag">v0.1.6</span>
+        <span class="version-tag">v0.1.7</span>
       </a>
 
       <!-- Center Nav Links -->
@@ -1966,7 +1790,7 @@
         </button>
 
         <!-- Download Button (High-Visibility Tag/CTA) -->
-        <a href="https://github.com/Kutaze/Antigravity-Enhance-Pack-Tools/releases" target="_blank" rel="noopener noreferrer" class="download-nav-btn" title="前往 GitHub Releases 下载最新安装包 (v0.1.6)">
+        <a href="https://github.com/Kutaze/Antigravity-Enhance-Pack-Tools/releases" target="_blank" rel="noopener noreferrer" class="download-nav-btn" title="前往 GitHub Releases 下载最新安装包 (v0.1.7)">
           <svg class="download-icon" viewBox="0 0 24 24">
             <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
           </svg>
@@ -2006,7 +1830,7 @@
     <section class="hero-section">
       <div class="hero-top-badges">
         <div class="hero-badge">
-          ✨ v0.1.6 深度修复版 · 时空刻度防震荡定位 · 本地日志穿透索引 · 思考能力自适应
+          ✨ v0.1.7 官方生态融入与清爽版 · 适配个性化定制 · 融合55+技能生态 · 输入框底栏恢复
         </div>
         <!-- Author Info in Hero -->
         <a href="#author" class="author-hero-pill">
@@ -2026,7 +1850,7 @@
 
       <div class="hero-btns">
         <a href="https://github.com/Kutaze/Antigravity-Enhance-Pack-Tools/releases" target="_blank" class="hero-cta hero-cta-primary">
-          📥 下载客户端 (v0.1.6)
+          📥 下载客户端 (v0.1.7)
         </a>
         <a href="#why" class="hero-cta hero-cta-secondary">
           💡 了解为什么需要它
@@ -2213,13 +2037,13 @@
         </div>
       </div>
 
-      <!-- Feature 2.1: Timeline Navigation & Instant Search (v0.1.6 New) -->
+      <!-- Feature 2.1: Timeline Navigation & Instant Search (v0.1.7 New) -->
       <div class="feature-showcase-row" id="timeline-nav">
         <div class="feature-media">
           <img src="assets/verified_timeline_viewer_live.png" alt="会话轮次即时搜索与快速直达弹窗">
         </div>
         <div class="feature-content">
-          <span class="feature-badge-mini badge-cyan">v0.1.6 交互核心重构</span>
+          <span class="feature-badge-mini badge-cyan">v0.1.7 交互核心重构</span>
           <h3>时空刻度导航进度条 · 会话轮次即时搜索直达</h3>
           <p>
             针对超长长程会话中反复拉扯滚动条、历史提问无法快速索引等深层痛点，独创垂直动态刻度进度条与即时搜索直达弹窗体系。
@@ -2245,13 +2069,13 @@
         </div>
       </div>
 
-      <!-- Feature 2.2: Historical Viewer Snapshot Card (v0.1.6 New) -->
+      <!-- Feature 2.2: Historical Viewer Snapshot Card (v0.1.7 New) -->
       <div class="feature-showcase-row reverse" id="historical-snapshot">
         <div class="feature-media">
           <img src="assets/verified_historical_snapshot_live.png" alt="超长会话毛玻璃历史快照卡片">
         </div>
         <div class="feature-content">
-          <span class="feature-badge-mini badge-emerald">v0.1.6 权威快照引擎</span>
+          <span class="feature-badge-mini badge-emerald">v0.1.7 权威快照引擎</span>
           <h3>超长会话毛玻璃历史快照 · 本地权威日志穿透索引</h3>
           <p>
             针对长程对话中目标轮次超出当前页面虚拟切片渲染池（已被 DOM 虚拟滚动物理卸载）的痛点，创新研发浮动快照回放卡片。
@@ -2277,13 +2101,13 @@
         </div>
       </div>
 
-      <!-- Feature 2.3: Model Adaptive Thinking & Disk Indexing (v0.1.6 New) -->
+      <!-- Feature 2.3: Model Adaptive Thinking & Disk Indexing (v0.1.7 New) -->
       <div class="feature-showcase-row" id="model-adaptive">
         <div class="feature-media">
           <img src="assets/verified_adaptive_thinking_live.png" alt="模型思考能力动态自适应与纯净本地索引">
         </div>
         <div class="feature-content">
-          <span class="feature-badge-mini badge-purple">v0.1.6 架构重大演进</span>
+          <span class="feature-badge-mini badge-purple">v0.1.7 架构重大演进</span>
           <h3>模型思考能力动态自适应 · 本地日志权威检索</h3>
           <p>
             独创模型能力自适应判定管道，不同模型各得其所。底层直通本地磁盘真实日志，为搜索弹窗打造 100% 纯净权威索引。
@@ -2371,7 +2195,7 @@
           </ul>
           <div style="margin-top: 1.35rem;">
             <a href="https://github.com/Kutaze/Antigravity-Enhance-Pack-Tools/releases" target="_blank" rel="noopener noreferrer" class="hero-cta hero-cta-primary" style="padding: 0.65rem 1.4rem; font-size: 0.92rem; display: inline-flex;">
-              📥 前往 GitHub Releases 下载安装包 (v0.1.6)
+              📥 前往 GitHub Releases 下载安装包 (v0.1.7)
             </a>
           </div>
         </div>
@@ -2504,10 +2328,9 @@
         </div>
       </div>
 
-      <div class="sponsor-page-cta-wrap">
-        <a href="sponsor.html" class="hero-cta hero-cta-secondary sponsor-page-cta-btn">
-          <span class="sponsor-cta-text-full">🌐 进入专属赞助页面 (查看大图二维码与完整特权指南) →</span>
-          <span class="sponsor-cta-text-short">🌐 进入专属赞助页面 (特权指南) →</span>
+      <div style="text-align: center; margin-top: 2.2rem;">
+        <a href="sponsor.html" class="hero-cta hero-cta-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 2rem; font-size: 1rem; border-radius: 999px; text-decoration: none;">
+          <span>🌐 进入专属赞助页面 (查看大图二维码与完整特权指南) →</span>
         </a>
       </div>
     </section>
